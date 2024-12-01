@@ -1,9 +1,16 @@
 # POTA Unactivated Park Finder
 
-The POTA Unactivated Park Finder (aka newparks.py) is a simple Python script that queries the Parks on the Air API to
+The POTA Unactivated Park Finder (aka `newparks.py`) is a simple Python script that queries the Parks on the Air API to
 find all parks that have never been activated, and produces a KML file of them that you can view in e.g. Google Earth.
 
 ![Google Earth screenshot showing the output KML](docs/googleearth.png)
+
+There is also an expanded version, `parksbylastactivated.py`, which produces a KML file of all parks, coloured by the
+time since last activation on a scale of red (many years ago) to green (today), using black to represent never-activated
+parks. This might help you find some extra parks that, while they *have* been activated in the past, could do with some
+love.
+
+![Google Earth screenshot showing the output KML](docs/googleearth2.png)
 
 ## What?
 
@@ -37,9 +44,19 @@ python3 newparks.py
 deactivate
 ```
 
-Then open the resulting `newparks.kml`
-in [Google Earth Pro](https://www.google.com/intl/en_uk/earth/about/versions/#download-pro) (desktop),
-[Google Earth](https://earth.google.com/web/) (web) or another KML viewer of your choice.
+Then open the resulting `newparks.kml` in [Google Earth Pro](https://www.google.com/intl/en_uk/earth/about/versions/#download-pro) (desktop), [Google Earth](https://earth.google.com/web/) (web) or another KML
+viewer of your choice.
+
+The use of `parksbylastactivated.py` is similar, but here we have to do additional requests to the POTA API to get the
+last activated date, so to spare their servers we don't want to do this for every park in the world.
+`parksbylastactivated.py` therefore takes a single parameter, which is your Maidenhead grid locator. It will then fetch
+only parks within 1 degree latitude and longitude of you. So for example:
+
+```
+python3 parksbylastactivated.py IO90br
+```
+
+The resultant `parksbylastactivated.kml` file can be viewed as above.
 
 ## Warning
 
