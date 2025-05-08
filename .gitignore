@@ -1,5 +1,5 @@
 /.idea
 /newparks_cache.sqlite
-/newparks.kml
+/newparks*.kml
 /parksbylastactivated_cache.sqlite
 /parksbylastactivated.kml
