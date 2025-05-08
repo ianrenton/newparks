@@ -47,6 +47,10 @@ deactivate
 Then open the resulting `newparks.kml` in [Google Earth Pro](https://www.google.com/intl/en_uk/earth/about/versions/#download-pro) (desktop), [Google Earth](https://earth.google.com/web/) (web) or another KML
 viewer of your choice.
 
+`newparks.py` also accepts command-line parameters to restrict the result to a single program. For example, to restrict
+the output to just GB parks, run `newparks.py GB`. The output file will be named `newparks-GB.kml`. You can also provide
+the `--list` argument on the command line to print a list of the programs.
+
 The use of `parksbylastactivated.py` is similar, but here we have to do additional requests to the POTA API to get the
 last activated date, so to spare their servers we don't want to do this for every park in the world.
 `parksbylastactivated.py` therefore takes a single parameter, which is your Maidenhead grid locator. It will then fetch
